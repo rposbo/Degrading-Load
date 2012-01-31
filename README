@@ -1,0 +1,7 @@
+DegradingLoad will attempt to load a process serverside async; if it takes too long it will "degrade" to using clientside ajax to retrieve the result without blocking the main page content
+
+Please read the source code to see what I'm trying to achieve. This is a VS2010 solution.
+
+Page degradingload->default.aspx attempts to load a potentially slow resource. If it loads within a set time period, it will be rendered server side. if the async task times out it will instead render the rest of the page and use a clientside ajax call to a webservice to retrieve the results from the slow process and render it clientside.
+
+Pass in a querystring param "timeout=<seconds>" to vary the async timeout: 1 will result in a clientside load, 3 or above in a serverside load.
